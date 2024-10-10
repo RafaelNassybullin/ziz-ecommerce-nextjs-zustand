@@ -7,16 +7,11 @@ export default function Card() {
       <div className="w-full h-[40%]  pt-[15px]">
         <div className="flex justify-between">
           <p className="w-fit h-fit px-[15px] py-[2px] font-bold text-[13px] rounded-[25px] bg-orange-200">Одежда</p>
-
           <p className="font-bold text-[21px]">73 000 ₸</p>
-
         </div>
-
-
         <p className="text-gray-700 mt-[13px] text-[18px] font-bold ">Кроссовки Nike Blazer 77 Pro Club White Black</p>
       </div>
-      <button className="w-full bg-red-500 py-[5px] font-bold text-white rounded-full ">Добавить в корзину</button>
-
+      <button className="w-full bg-black hover:bg-[#0275FF] py-[5px] font-bold text-white rounded-full ">Добавить в корзину</button>
     </div>
   )
 }
