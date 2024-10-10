@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
- 
+:root {}
+
+.font-antonRegular {
+  font-family: var(--font-anton-regular);
+}
+
+
+
+
+
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0.5rem, rgba(0, 0, 0, 0.1) 0px 0.125rem 1.125rem;
+}
+
+.cut-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
