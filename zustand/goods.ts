@@ -14,10 +14,8 @@ interface useGoodsState {
   goods: Goods[]
   categories: any
   categoryData: []
-
   searchValue: string
   setSearchValue: (value:string) => void
-
   setCategories: (category: string) => void
   getData: (categories?: string, sort?: string, search?: string) => void
 }
@@ -28,7 +26,6 @@ export const useGoods = create<useGoodsState>()(
     goods: [],
     categories: [],
     categoryData: [],
-
     searchValue: "",
     setSearchValue: (value: string) => {
       set((state) => {
@@ -59,7 +56,6 @@ export const useGoods = create<useGoodsState>()(
       set({
         goods: json.data,
         categoryData: json.categoryData
-        // loading: false
       });
     },
 

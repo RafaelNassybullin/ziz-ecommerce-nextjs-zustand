@@ -1,31 +1,25 @@
 import { data } from "@/data";
+import { arraySearch } from "@/functions";
 import { Goods } from "@/zustand/goods";
 import { NextRequest, NextResponse } from "next/server";
-
-const arraySearch = (array: any, keyword: any) => {
-  const searchTerm = keyword.toLowerCase()
-  return array.filter((value: any) => {
-    return value.name.toLowerCase().match(new RegExp(searchTerm, 'g'))
-  })
-}
 
 export async function GET(request: NextRequest) {
 
   const categories = request.nextUrl.searchParams.get('categories') || "";
   const sort = request.nextUrl.searchParams.get('sort') || "";
-  const page = request.nextUrl.searchParams.get('page') || "";
   const search = request.nextUrl.searchParams.get('search') || " ";
+  const page = parseInt(request.nextUrl.searchParams.get('page') as string) || 1;
+  const limit = parseInt(request.nextUrl.searchParams.get('limit') as string) || 9;
 
   try {
     //получение доступных категорий
     const categoryData = data.map(item => item.category).filter((value, index, self) => self.indexOf(value) === index).sort()
     let goods: Goods[] = data;
-
-    console.log(search, "7688")
+    //живой поиск
     if (search !== "" || search !== undefined || sort !== "undefined") {
       goods = arraySearch(goods, search)
     }
-
+    //сортировка по ID
     if (sort === "" || sort === undefined || sort === "undefined" || sort === "Не сортировать") {
       goods = goods.sort((a, b) => a.id - b.id)
     }
@@ -38,11 +32,19 @@ export async function GET(request: NextRequest) {
       goods = goods.sort((a, b) => b.price - a.price);
     }
 
+    const totalItems = goods.length;
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedData = goods.slice(startIndex, endIndex);
+
     //если категории не заданы то вернуть все данные 
     if (categories === "" || categories === undefined || categories === "undefined") {
       return NextResponse.json({
-        data: goods,
-        categoryData
+        categoryData,
+        data: paginatedData,
+        totalItems,
+        totalPages: Math.ceil(totalItems / limit),
+        currentPage: page,
       });
     }
     //если категории заданы вернуть отфильтрованные данные
@@ -50,20 +52,21 @@ export async function GET(request: NextRequest) {
       let categoriesArray = categories.split(",")
       const filteredItems = goods.filter((item => categoriesArray.includes(item.category)))
       return NextResponse.json({
-        data: filteredItems,
-        categoryData
+        categoryData,
+        data: filteredItems.slice(startIndex, endIndex),
+        totalItems,
+        totalPages: Math.ceil(totalItems / limit),
+        currentPage: page,
       });
     }
 
-    // return NextResponse.json({
-    //   data: goods,
-    //   categoryData
-    // });
-
   } catch {
     return NextResponse.json({
+      categoryData:[],
       data: [],
-      categoryData: []
+      totalItems: 0,
+      totalPages: 0,
+      currentPage: page
     });
   }
 }

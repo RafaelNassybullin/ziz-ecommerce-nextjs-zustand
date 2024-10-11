@@ -4,9 +4,6 @@ import Search from "./search";
 
 export default function Navbar() {
 
-
-
-
   return (
     <nav className={`w-full h-[64px] shadow bg-black fixed top-0 left-0`}>
       <div className="container px-[15px] mx-auto h-full w-full flex justify-between items-center">

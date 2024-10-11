@@ -9,6 +9,7 @@ export default function Sort() {
   const setSortStatus = useModals((state) => state.setSortStatus)
   const getData = useGoods(state => state.getData)
   const categories = useGoods(state => state.categories)
+  const searchValue = useGoods(state => state.searchValue);
 
   const sortingArray = ["Не сортировать", "По возрастанию", "По убыванию"]
 
@@ -22,8 +23,9 @@ export default function Sort() {
 
   function sortResponce(status: string) {
     setSortStatus(status)
-    getData(categories, status)
+    getData(categories, status, searchValue)
   }
+
 
   return (
     <>

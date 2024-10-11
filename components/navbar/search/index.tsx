@@ -6,14 +6,9 @@ export default function Search() {
   const categories = useGoods(state => state.categories);
   const sortStatus = useModals((state) => state.sortStatus);
   const getData = useGoods(state => state.getData);
-
   const searchValue = useGoods(state => state.searchValue);
   const setSearchValue = useGoods(state => state.setSearchValue);
 
-
-
-
-  
   function onChange(e: any) {
     setSearchValue(e.target.value)
     getData(categories, sortStatus, searchValue);

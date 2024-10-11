@@ -9,13 +9,10 @@ export default function Aside() {
   const categoryData = useGoods(state => state.categoryData)
   const setCategories = useGoods(state => state.setCategories)
   const getData = useGoods(state => state.getData)
-
-
   const categories = useGoods(state => state.categories);
   const sortStatus = useModals((state) => state.sortStatus);
   const searchValue = useGoods(state => state.searchValue);
 
-  
   useEffect(() => {
     getData(categories, sortStatus, searchValue)
   }, [categories])
