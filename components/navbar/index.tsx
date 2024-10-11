@@ -14,7 +14,7 @@ export default function Navbar() {
           </div>
         </div>
         <BasketIcon />
-        {/* <BasketModal /> */}
+        <BasketModal />
       </div>
     </nav>
   )

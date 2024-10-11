@@ -1,7 +1,15 @@
+"use client"
+import { useCart } from "@/zustand/cart"
+import { useModals } from "@/zustand/modals"
+
 export default function BasketIcon() {
+
+  const setCartModal = useModals(state => state.setCartModal)
+  const goods = useCart(state => state.goods)
+
   return (
-    <div className="relative">
-      <div className="absolute top-[-7px] right-[-4px] w-[18px] h-[18px] text-white text-[10px] rounded-full cursor-pointer bg-[#0275FF] grid place-items-center font-bold">7</div>
+    <div className="relative" onClick={() => setCartModal(true)}>
+      {goods.length !== 0 && <div className="absolute top-[-7px] right-[-4px] w-[18px] h-[18px] text-white text-[10px] rounded-full cursor-pointer bg-[#0275FF] grid place-items-center font-bold">{goods.length}</div>}
       <svg
         className="w-[35px] h-[35px] cursor-pointer fill-white"
         xmlns="http://www.w3.org/2000/svg"
