@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${antonRegular.variable} antialiased pt-[94px] bg-white`}
+        className={`${antonRegular.variable} antialiased pt-[59px] bg-white`}
       >
         {children}
       </body>
