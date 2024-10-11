@@ -2,7 +2,7 @@ import { useCart } from "@/zustand/cart"
 
 export default function Card({ id, name, category, price, image }: any) {
   const addToCart = useCart(state => state.addToCart)
- 
+
   function addToBasket() {
     addToCart({ id, name, category, price, image })
   }

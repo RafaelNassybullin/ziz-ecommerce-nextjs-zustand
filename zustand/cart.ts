@@ -29,13 +29,6 @@ export const useCart = create<Cart>()(
           state.sumOfCart = state.goods.reduce((accumulator, item) => accumulator + item.price, 0)
         })
       },
-
-      
-
-
-
-
-
     })),
     { name: "cart", version: 1 }
   )
