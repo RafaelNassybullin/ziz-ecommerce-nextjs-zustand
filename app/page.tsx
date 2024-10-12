@@ -5,18 +5,34 @@ import Main from "@/components/main";
 import Sort from "@/components/main/sort";
 import Navbar from "@/components/navbar";
 import Paginations from "@/components/pagination";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <Sort />
+
+      <Suspense>
+        <Sort />
+      </Suspense>
+
       <div className="container mx-auto flex justify-between ">
-        <Aside />
-        <Main />
+
+        <Suspense>
+          <Aside />
+        </Suspense>
+
+        <Suspense>
+          <Main />
+        </Suspense>
+
       </div>
-      <Paginations />
-      <Loader/>
+      <Suspense>
+        <Paginations />
+      </Suspense>
+
+
+      <Loader />
       <Footer />
     </>
   );
