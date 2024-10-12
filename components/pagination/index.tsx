@@ -7,22 +7,22 @@ import { useSearchParams } from 'next/navigation'
 
 export default function Paginations() {
   const router = useRouter();
-  const totalPages = useGoods(state => state.totalPages)
   const searchParams = useSearchParams()
   const page = searchParams.get('page')
+  const totalPages = useGoods(state => state.totalPages)
   const categories = useGoods(state => state.categories);
   const sortStatus = useModals((state) => state.sortStatus);
   const searchValue = useGoods(state => state.searchValue);
   const getData = useGoods(state => state.getData)
-  function k(pages: number) {
+  function pageChange(pages: number) {
     getData(categories, sortStatus, searchValue, Number(pages))
     router.push(`?page=${pages}`)
   }
   return (
-    <div className="w-full flex justify-center h-[64px]">
+    <div className="w-full max-[768px]:mt-[25px] flex justify-center h-[64px]">
       {totalPages >= 2 && <Pagination
         loop
-        onChange={(pages) => k(pages)}
+        onChange={(pages) => pageChange(pages)}
         classNames={{
           cursor: "bg-black font-bold text-white",
           wrapper: "gap-[7px]"

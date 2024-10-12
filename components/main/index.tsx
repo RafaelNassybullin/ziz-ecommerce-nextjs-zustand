@@ -21,7 +21,7 @@ export default function Main() {
   }, [searchValue])
 
   return (
-    <main className={`w-[75%] min-h-[70vh] grid grid-cols-3 gap-[15px]`}>
+    <main className={`w-[75%] max-[1280px]:w-[100%] max-[360px]:px-[10px] max-[768px]:px-[55px] max-[515px]:px-[20px] max-[768px]:min-h-[50vh] min-h-[70vh] max-[1024px]:grid-cols-2 grid grid-cols-3 max-[768px]:gap-[10px] gap-[15px]`}>
       <>
         {
           goods.map(({ id, name, category, price, image }) => (

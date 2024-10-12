@@ -26,14 +26,14 @@ export const data = [
     name: "Смартфон Apple iPhone 14 Pro Max 128GB",
     category: "Электроника",
     price: 109990,
-    image: "4.jpg"
+    image: "4.webp"
   },
   {
     id: 5,
     name: "Ноутбук Lenovo IdeaPad 3 15ADA6",
     category: "Электроника",
     price: 44990,
-    image: "5.jpg"
+    image: "5.webp"
   },
   {
     id: 6,
@@ -54,56 +54,56 @@ export const data = [
     name: "Кофемашина De'Longhi EC685",
     category: "Кухня",
     price: 27990,
-    image: "8.jpg"
+    image: "8.png"
   },
   {
     id: 9,
     name: "Электрическая зубная щетка Oral-B Genius 9000",
     category: "Гигиена",
     price: 10990,
-    image: "9.jpg"
+    image: "9.webp"
   },
   {
     id: 10,
     name: "Игровая консоль Sony PlayStation 5",
     category: "Игры",
     price: 49990,
-    image: "10.jpg"
+    image: "10.webp"
   },
   {
     id: 11,
     name: "Кроссовки Adidas Ultraboost 21",
     category: "Одежда",
     price: 14990,
-    image: "11.jpg"
+    image: "11.png"
   },
   {
     id: 12,
     name: "Графический планшет Wacom Intuos Pro",
     category: "Компьютеры",
     price: 25990,
-    image: "12.jpg"
+    image: "12.webp"
   },
   {
     id: 13,
     name: "Смарт-часы Samsung Galaxy Watch 4",
     category: "Электроника",
     price: 24990,
-    image: "13.jpg"
+    image: "13.png"
   },
   {
     id: 14,
     name: "Телевизор Samsung 55' 4K UHD",
     category: "Электроника",
     price: 69990,
-    image: "14.jpg"
+    image: "14.jpeg"
   },
   {
     id: 15,
     name: "Микроволновая печь Samsung ME83KRW",
     category: "Кухня",
     price: 14990,
-    image: "15.jpg"
+    image: "15.webp"
   },
   {
     id: 16,
@@ -117,21 +117,21 @@ export const data = [
     name: "Сумка для ноутбука HP 15.6'",
     category: "Аксессуары",
     price: 2990,
-    image: "17.jpg"
+    image: "17.webp"
   },
   {
     id: 18,
     name: "Пылесос Philips FC6149/01",
     category: "Бытовая техника",
     price: 7990,
-    image: "18.jpg"
+    image: "18.jpeg"
   },
   {
     id: 19,
     name: "Настольная игра Catan",
     category: "Игры",
     price: 4990,
-    image: "19.jpg"
+    image: "19.webp"
   },
   {
     id: 20,
@@ -145,7 +145,7 @@ export const data = [
     name: "Умная колонка Яндекс Станция",
     category: "Аудио",
     price: 7990,
-    image: "21.jpg"
+    image: "21.png"
   },
   {
     id: 22,
@@ -166,14 +166,14 @@ export const data = [
     name: "Монитор Dell UltraSharp U2720Q",
     category: "Компьютеры",
     price: 49990,
-    image: "24.jpg"
+    image: "24.png"
   },
   {
     id: 25,
     name: "Клавиатура Logitech G Pro X",
     category: "Компьютеры",
     price: 8990,
-    image: "25.jpg"
+    image: "25.webp"
   },
   {
     id: 26,
@@ -194,7 +194,7 @@ export const data = [
     name: "Фен Philips HP8232/00",
     category: "Гигиена",
     price: 3990,
-    image: "28.jpg"
+    image: "28.png"
   },
   {
     id: 29,
