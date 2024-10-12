@@ -3,7 +3,7 @@
 
 Приложение в деплое на Vercel.com
 
-Откройте в браузере: 
+Откройте в браузере: [https://ziz-ecommerce-nextjs-zustand.vercel.app](https://ziz-ecommerce-nextjs-zustand.vercel.app)
 
 Для локального запуска используйте команды:
 
