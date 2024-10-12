@@ -31,7 +31,6 @@ export async function GET(request: NextRequest) {
     if (sort === "По убыванию") {
       goods = goods.sort((a, b) => b.price - a.price);
     }
-    console.log(page)
     const totalItems = goods.length;
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
@@ -52,12 +51,12 @@ export async function GET(request: NextRequest) {
     if (categories !== "") {
       let categoriesArray = categories.split(",")
       const filteredItems = goods.filter((item => categoriesArray.includes(item.category)))
-      const j = filteredItems.length
+      const total = filteredItems.length
       return NextResponse.json({
         categoryData,
         data: filteredItems.slice(startIndex, endIndex),
         totalItems,
-        totalPages: Math.ceil(j / limit),
+        totalPages: Math.ceil(total / limit),
         currentPage: page,
       });
     }

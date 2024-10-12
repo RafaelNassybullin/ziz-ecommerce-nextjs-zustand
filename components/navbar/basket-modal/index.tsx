@@ -19,7 +19,7 @@ export default function BasketModal() {
             <p className="text-[27px] font-bold mb-[15px]">Корзина товаров:</p>
             <p className="text-[27px] font-bold mb-[15px]">{goods.length} шт.</p>
           </div>
-          <div className="w-full h-[80%] overflow-y-auto">
+          {goods.length !== 0 && <div className="w-full h-[80%] overflow-y-auto">
             {goods.map(({ id, name, price, image }) => (
               <BasketCard
                 key={id}
@@ -29,7 +29,10 @@ export default function BasketModal() {
                 image={image}
               />
             ))}
-          </div>
+          </div>}
+          {goods.length === 0 && <div className="w-full h-[80%] text-[40px] font-bold grid place-items-center">
+            <p>Пусто...</p>
+          </div>}
           <button disabled={sumOfCart === 0} className={`w-full bg-black ${sumOfCart === 0 && "bg-gray-200 text-black hover:bg-gray-200"} text-white text-[23px] hover:bg-[#0275FF] py-[10px] mt-[15px] rounded-full font-bold `}>Оформить за {sumOfCart.toLocaleString("ru")} ₸</button>
         </div>
       </>

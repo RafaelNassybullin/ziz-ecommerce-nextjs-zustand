@@ -1,5 +1,6 @@
 import Aside from "@/components/aside";
 import Footer from "@/components/footer";
+import Loader from "@/components/loader";
 import Main from "@/components/main";
 import Sort from "@/components/main/sort";
 import Navbar from "@/components/navbar";
@@ -15,6 +16,7 @@ export default function Home() {
         <Main />
       </div>
       <Paginations />
+      <Loader/>
       <Footer />
     </>
   );

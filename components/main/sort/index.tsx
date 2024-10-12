@@ -10,10 +10,10 @@ export default function Sort() {
   const getData = useGoods(state => state.getData)
   const categories = useGoods(state => state.categories)
   const searchValue = useGoods(state => state.searchValue);
- 
-  
+
+
   const searchParams = useSearchParams()
-    const page = searchParams.get('page')
+  const page = searchParams.get('page')
   const sortingArray = ["Не сортировать", "По возрастанию", "По убыванию"]
 
   function openModal() {
@@ -36,9 +36,9 @@ export default function Sort() {
         <p className="mr-[15px]">По цене:</p>
         <div onClick={openModal} className="w-[250px] h-[44px] px-[20px] cursor-pointer font-bold flex justify-between items-center rounded-[10px] shadow">
           <p>{sortStatus}</p>
-          <svg className="fill-black w-[25px] h-[25px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M286-436v-230l-76 76-96-95 240-241 240 241-96 95-76-76v230H286ZM606-34 366-275l96-95 76 76v-230h136v230l76-76 96 95L606-34Z" /></svg>
+          <svg className="fill-black  w-[25px] h-[25px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M286-436v-230l-76 76-96-95 240-241 240 241-96 95-76-76v230H286ZM606-34 366-275l96-95 76 76v-230h136v230l76-76 96 95L606-34Z" /></svg>
         </div>
-        {sortModal && <div onClick={closeModal} className="w-[100%] h-[100vh] bg-[#000000CC] fixed top-0 right-0">
+        {sortModal && <div onClick={closeModal} className="w-[100%] h-[100vh]  bg-[#000000CC] fixed top-0 right-0">
           <div className="w-full h-full container mx-auto flex justify-end">
             <div className="w-[250px] rounded-[10px] p-[7px] cursor-pointer mt-[130px] bg-white h-[174px]">
               {

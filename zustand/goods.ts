@@ -17,6 +17,10 @@ interface useGoodsState {
   totalPages: number
   currentPage: number
   searchValue: string
+
+  isEmpty: boolean
+
+
   setCurrentPage: (page: number) => void
   setSearchValue: (value: string) => void
   setCategories: (category: string) => void
@@ -37,6 +41,7 @@ export const useGoods = create<useGoodsState>()(
       })
     },
     searchValue: "",
+    isEmpty: false,
     setSearchValue: (value: string) => {
       set((state) => {
         state.searchValue = value
@@ -57,14 +62,21 @@ export const useGoods = create<useGoodsState>()(
     getData: async (categories?: string, sort?: string, search?: string, page?: number) => {
       set((state) => {
         state.loading = true
+        state.isEmpty = false
       })
+
       const result = await fetch(`/api/getGoods?categories=${categories}&sort=${sort}&search=${search}&page=${page}`);
       const json = await result.json();
-      console.log(json)
+
+      if (json.data.length === 0) {
+        set({ isEmpty: true })
+      }
+
       set({
         goods: json.data,
         categoryData: json.categoryData,
-        totalPages: json.totalPages
+        totalPages: json.totalPages,
+        loading: false
       });
     },
   }))

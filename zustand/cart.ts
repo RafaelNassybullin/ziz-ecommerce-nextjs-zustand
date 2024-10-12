@@ -21,8 +21,14 @@ export const useCart = create<Cart>()(
 
       addToCart: (good: Goods) => {
         set((state) => {
-          state.goods.unshift(good)
-          state.sumOfCart = state.goods.reduce((accumulator, item) => accumulator + item.price, 0)
+          if (state.goods.some((item) => item.id === good.id)) {
+            state.goods = state.goods.filter(item => item.id !== good.id);
+            state.goods.unshift(good);
+            state.sumOfCart = state.goods.reduce((accumulator, item) => accumulator + item.price, 0)
+          } else {
+            state.goods.unshift(good)
+            state.sumOfCart = state.goods.reduce((accumulator, item) => accumulator + item.price, 0)
+          }
         })
       },
 
