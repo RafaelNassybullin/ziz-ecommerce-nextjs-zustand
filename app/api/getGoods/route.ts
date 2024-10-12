@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     if (sort === "По убыванию") {
       goods = goods.sort((a, b) => b.price - a.price);
     }
-
+    console.log(page)
     const totalItems = goods.length;
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
@@ -47,22 +47,24 @@ export async function GET(request: NextRequest) {
         currentPage: page,
       });
     }
+    
     //если категории заданы вернуть отфильтрованные данные
     if (categories !== "") {
       let categoriesArray = categories.split(",")
       const filteredItems = goods.filter((item => categoriesArray.includes(item.category)))
+      const j = filteredItems.length
       return NextResponse.json({
         categoryData,
         data: filteredItems.slice(startIndex, endIndex),
         totalItems,
-        totalPages: Math.ceil(totalItems / limit),
+        totalPages: Math.ceil(j / limit),
         currentPage: page,
       });
     }
 
   } catch {
     return NextResponse.json({
-      categoryData:[],
+      categoryData: [],
       data: [],
       totalItems: 0,
       totalPages: 0,

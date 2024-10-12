@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import Main from "@/components/main";
 import Sort from "@/components/main/sort";
 import Navbar from "@/components/navbar";
+import Paginations from "@/components/pagination";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Aside />
         <Main />
       </div>
+      <Paginations />
       <Footer />
     </>
   );

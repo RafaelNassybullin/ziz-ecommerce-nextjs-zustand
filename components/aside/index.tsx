@@ -1,26 +1,27 @@
 "use client"
-
+import { useRouter } from 'next/navigation';
 import { useGoods } from "@/zustand/goods"
 import { useModals } from "@/zustand/modals"
 import { useEffect } from "react"
+import { useSearchParams } from 'next/navigation'
 
 export default function Aside() {
-
   const categoryData = useGoods(state => state.categoryData)
   const setCategories = useGoods(state => state.setCategories)
   const getData = useGoods(state => state.getData)
   const categories = useGoods(state => state.categories);
   const sortStatus = useModals((state) => state.sortStatus);
   const searchValue = useGoods(state => state.searchValue);
-
+  const router = useRouter();
+  const searchParams = useSearchParams()
+  const page = searchParams.get('page')
   useEffect(() => {
-    getData(categories, sortStatus, searchValue)
-  }, [categories])
-
+    getData(categories, sortStatus, searchValue, Number(page))
+  }, [categories, page])
   function filterCategoryArray(category: string) {
     setCategories(category)
+    router.push(`/`)
   }
-
   return (
     <aside className="w-[23%] rounded-[15px] shadow p-[25px]  bg-white border-solid border-[#E3E3E3] pt-[15px] h-full">
       <p className="text-[27px] font-bold">

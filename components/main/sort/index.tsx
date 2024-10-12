@@ -1,7 +1,7 @@
 "use client"
 import { useGoods } from "@/zustand/goods"
 import { useModals } from "@/zustand/modals"
-
+import { useSearchParams } from 'next/navigation'
 export default function Sort() {
   const setSortModal = useModals((state) => state.setSortModal)
   const sortModal = useModals((state) => state.sortModal)
@@ -10,7 +10,10 @@ export default function Sort() {
   const getData = useGoods(state => state.getData)
   const categories = useGoods(state => state.categories)
   const searchValue = useGoods(state => state.searchValue);
-
+ 
+  
+  const searchParams = useSearchParams()
+    const page = searchParams.get('page')
   const sortingArray = ["Не сортировать", "По возрастанию", "По убыванию"]
 
   function openModal() {
@@ -23,7 +26,7 @@ export default function Sort() {
 
   function sortResponce(status: string) {
     setSortStatus(status)
-    getData(categories, status, searchValue)
+    getData(categories, status, searchValue, Number(page))
   }
 
 

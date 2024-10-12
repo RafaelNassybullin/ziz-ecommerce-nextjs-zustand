@@ -14,10 +14,13 @@ interface useGoodsState {
   goods: Goods[]
   categories: any
   categoryData: []
+  totalPages: number
+  currentPage: number
   searchValue: string
-  setSearchValue: (value:string) => void
+  setCurrentPage: (page: number) => void
+  setSearchValue: (value: string) => void
   setCategories: (category: string) => void
-  getData: (categories?: string, sort?: string, search?: string) => void
+  getData: (categories?: string, sort?: string, search?: string, page?: number) => void
 }
 
 export const useGoods = create<useGoodsState>()(
@@ -26,14 +29,19 @@ export const useGoods = create<useGoodsState>()(
     goods: [],
     categories: [],
     categoryData: [],
+    totalPages: 1,
+    currentPage: 1,
+    setCurrentPage: (page: number) => {
+      set((state) => {
+        state.currentPage = page
+      })
+    },
     searchValue: "",
     setSearchValue: (value: string) => {
       set((state) => {
         state.searchValue = value
       })
     },
-
-
     setCategories: (category: string) => {
       set((state) => {
         state.categories.push(category)
@@ -46,18 +54,18 @@ export const useGoods = create<useGoodsState>()(
         state.categories = state.categories.filter((item: any) => count[item] === 1);
       })
     },
-
-    getData: async (categories?: string, sort?: string, search?: string) => {
+    getData: async (categories?: string, sort?: string, search?: string, page?: number) => {
       set((state) => {
         state.loading = true
       })
-      const result = await fetch(`/api/getGoods?categories=${categories}&sort=${sort}&search=${search}`);
+      const result = await fetch(`/api/getGoods?categories=${categories}&sort=${sort}&search=${search}&page=${page}`);
       const json = await result.json();
+      console.log(json)
       set({
         goods: json.data,
-        categoryData: json.categoryData
+        categoryData: json.categoryData,
+        totalPages: json.totalPages
       });
     },
-
   }))
 );
